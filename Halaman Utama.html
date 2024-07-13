@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Tempat Wisata</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Daftar Tempat Wisata Di Indonesia</h1>
+        <div id="places-container" class="row"></div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Data tempat wisata dalam format JSON
+        const places = [
+            {
+                "id": 1,
+                "name": "Pantai Kuta",
+                "description": "Pantai terkenal di Bali.",
+                "image": "kutabali.jpeg"
+            },
+            {
+                "id": 2,
+                "name": "Candi Borobudur",
+                "description": "Candi Budha terbesar di dunia.",
+                "image": "borobudur.jpeg"
+            },
+            {
+                "id": 3,
+                "name": "Danau Toba",
+                "description": "Danau vulkanik terbesar di dunia.",
+                "image": "danautoba.jpeg"
+            },
+            { "id": 4,
+                "name": "Candi Prambanan",
+                "description": "candi Hindu yang terbesar di Indonesia.",
+                "image": "prambanan.jpeg"
+            },
+            {"id": 5,
+                "name": "Danau Kelimutu",
+                "description": "Danau 3 warna yang terkenal di Ende, Nusa Tenggara Timur.",
+                "image": "kelimutu.jpeg"
+            },
+            {"id": 6,
+                "name": "Gunung Wolobobo",
+                "description": "Wolobobo merupakan salah satu tempat wisata yang ada di Bajawa, NTT.",
+                "image": "wolobobo.jpeg"
+            },
+            {"id": 7,
+                "name": "Pulau Komodo",
+                "description": "Pulau komodo terletak di Labuan Bajo, NTT.",
+                "image": "komodo.jpeg"
+            },
+            {"id": 8,
+                "name": "Gunung Bromo",
+                "description": "gunung yang aktif di kawasan Taman Nasional Bromo di Jawa Timur.",
+                "image": "bromo.jpeg"
+            },
+            {"id": 9,
+                "name": "Raja Ampat",
+                "description": "tempat wisata yang ada di Papua.",
+                "image": "rajaampat.jpeg"
+            }
+        ];
+
+        // Fungsi untuk menampilkan daftar tempat wisata
+        function displayPlaces() {
+            const container = document.getElementById('places-container');
+            places.forEach(place => {
+                const placeCard = `
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="${place.image}" class="card-img-top" alt="${place.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${place.name}</h5>
+                                <p class="card-text">${place.description}</p>
+                                <a href="detail.html?id=${place.id}" class="btn btn-primary">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += placeCard;
+            });
+        }
+
+        // Panggil fungsi untuk menampilkan tempat wisata saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', displayPlaces);
+    </script>
+</body>
+</html>
